@@ -60,3 +60,4 @@ module.exports.discordClientId =
   process.env.DISCORD_CLIENT_ID || config.discord.client.ID;
 module.exports.discordClientSecret =
   process.env.DISCORD_CLIENT_SECRET || config.discord.client.SECRET;
+module.exports.guildID = "500554530614935573";
