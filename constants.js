@@ -5,7 +5,19 @@ try {
 }
 
 /**
+ * General constants
+ * prefix
+ *
+ *
+ */
+
+module.exports.prefix = "!";
+
+/**
+ *
  * Twitch constants
+ * token, username, clientID, channel, channelID
+ *
  *
  */
 
@@ -17,7 +29,10 @@ module.exports.channel = "maybeagoodman";
 module.exports.channelId = 90496824;
 
 /**
+ *
  * Discord constants
+ * token, clientID, clientSecret
+ *
  *
  */
 
