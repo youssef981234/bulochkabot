@@ -4,7 +4,8 @@
   "description": "Bot for twitch and discord.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "deploy": "git push heroku"
   },
   "repository": {
     "type": "git",
