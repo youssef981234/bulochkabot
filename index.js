@@ -30,7 +30,7 @@ const {
 const { chat, api } = new TwitchClient({ token, username, clientId });
 
 chat.on("PRIVMSG", content => {
-  const message = content.message;
+  const message = content.message.toLowerCase();
   const user = content.username;
   const userId = content.tags.userId;
 
@@ -39,6 +39,14 @@ chat.on("PRIVMSG", content => {
   const isBroadcaster = content.tags.badges.broadcaster;
 
   const isCommand = message.startsWith(prefix);
+
+  if (
+    message.includes("getviewers .pro") ||
+    message.includes("getviewers.pro")
+  ) {
+    chat.ban(channel, user);
+    chat.say(channel, `${user} был забанен (Реклама)`);
+  }
 
   if (isCommand) {
     const command = message
