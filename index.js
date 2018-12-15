@@ -18,9 +18,13 @@ const {
   channel,
   channelId,
   discordToken,
+  guildID,
   prefix,
   eightBallAnswers
 } = require("./constants");
+
+const { request } = require("./commands/twitch/requests/index");
+const { queue } = require("./commands/discord/music/queueMap");
 
 /**
  * Twitch Client
@@ -30,7 +34,7 @@ const {
 const { chat, api } = new TwitchClient({ token, username, clientId });
 
 chat.on("PRIVMSG", content => {
-  const message = content.message.toLowerCase();
+  const message = content.message;
   const user = content.username;
   const userId = content.tags.userId;
 
@@ -123,6 +127,25 @@ chat.on("PRIVMSG", content => {
               `@${user}, Похоже, что ты ещё не с нами! Ты знаешь, что делать B) Жми follow и наслаждайся стримом!`
             );
           });
+        break;
+      case "request":
+        const args = message.split(" ").pop();
+        request(DiscordClient, args, user, chat);
+        break;
+      case "song":
+        const fetched = queue.get(guildID);
+        if (!fetched) {
+          chat.say(channel, `В настоящее время реквестов нет.`);
+        }
+        const currentQueue = fetched.queue;
+
+        chat.say(
+          channel,
+          `Сейчас играет: ${currentQueue[0].songTitle} | Поставил: ${
+            currentQueue[0].requester
+          }`
+        );
+
         break;
       default:
         chat.say(
