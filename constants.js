@@ -12,6 +12,25 @@ try {
  */
 
 module.exports.prefix = "!";
+module.exports.eightBallAnswers = [
+  "Нет и точка.",
+  "Все возможно Kappa",
+  "... ну, и такое бывает KappaPride",
+  "Да как ты посмел такое спросить ? DansGame",
+  "ну может быть ResidentSleeper",
+  "Да, наверно... Keepo",
+  "Я не хочу на такое отвечать PunOko",
+  "Вопрос, конечно, интереснный, но отвечать я, конечно же, не буду CoolStoryBob",
+  "Даже думать не хочу об этом PanicVis",
+  "Дайте ему мут, чтобы он не задавал таких вопросов BlessRNG",
+  "Мне кажется или ты дурак, раз задаешь такие вопросы? TehePelo",
+  "Я бы ответил, но боюсь меня забанят за такое KappaRoss",
+  "Да, инфа 100%",
+  "Определенно да TPFufun ",
+  "Именно так",
+  "Ты делаешь мне больно, когда задаешь такие вопросы BibleThump",
+  "Вот щас не понял cmonBruh"
+];
 
 /**
  *
@@ -25,7 +44,7 @@ module.exports.token = process.env.TWITCH_OAUTH || config.twitch.OAUTH;
 module.exports.username = process.env.TWITCH_USERNAME || config.twitch.USERNAME;
 module.exports.clientId =
   process.env.TWITCH_CLIENT_ID || config.twitch.client.ID;
-module.exports.channel = "maybeagoodman";
+module.exports.channel = "thatlongcat";
 module.exports.channelId = 90496824;
 
 /**
