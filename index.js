@@ -6,8 +6,8 @@ countdown.resetLabels();
 countdown.setLabels(
   " миллисекунд| сек| мин| час| день| неделя| месяц| год| десятилетие| век| тысячелетие",
   " миллисекунды| сек| мин| часов| дней| недель| месяцов| лет| десятилетий| веков| тысячелетий",
-  " ",
-  " "
+  ", ",
+  ", "
 );
 
 const path = require("path");
@@ -89,14 +89,12 @@ chat.on("PRIVMSG", content => {
               return;
             }
 
-            const timestamp = new Date(response.stream.created_at).getTime();
+            const timestamp = new Date(response.stream.createdAt).getTime();
             const uptime = countdown(timestamp, Date.now(), 158);
             const game = response.stream.game;
+            const message = `Стрим идет уже: ${uptime}. Игра на стриме: ${game}`;
 
-            chat.say(
-              channel,
-              `Стрим идет уже: ${uptime}. Игра на стриме: ${game}`
-            );
+            chat.say(channel, message);
           })
           .catch(err => {
             console.error(err);
