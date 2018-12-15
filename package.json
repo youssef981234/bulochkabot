@@ -19,10 +19,14 @@
   "license": "MIT",
   "dependencies": {
     "countdown": "^2.6.0",
+    "cyrillic-to-translit-js": "^2.1.0",
     "discord.js": "^11.4.2",
     "discord.js-commando": "^0.10.0",
+    "ffmpeg": "0.0.4",
     "opusscript": "0.0.6",
     "path": "^0.12.7",
-    "twitch-js": "^2.0.0-beta.30"
+    "twitch-js": "^2.0.0-beta.30",
+    "yt-search": "^0.4.1",
+    "ytdl-core": "^0.28.2"
   }
 }
