@@ -137,7 +137,8 @@ class PlayMusicCommand extends Command {
         views: info.player_response.videoDetails.viewCount,
         requester: message.author.tag,
         url: link,
-        announceChannel: message.channel.id
+        announceChannel: message.channel.id,
+        type: "Discord"
       });
       deleteMessage(message, message.id);
       if (!data.dispatcher) this.play(this.client, queue, data);
