@@ -26,7 +26,7 @@ chat.on("PRIVMSG", message => {
 
 const DiscordClient = new CommandoClient({
   owner: "462675608556797952",
-  commandPrefix: ``,
+  commandPrefix: `!`,
   disableEveryone: true
 });
 
@@ -34,7 +34,8 @@ DiscordClient.registry
   .registerDefaultTypes()
   .registerGroups([
     ["help", "Показать существующие команды"],
-    ["music", "Слушать, пропускать музыку в голосовом канале"]
+    ["music", "Слушать, пропускать музыку в голосовом канале"],
+    ["misc", "Различные мелкие комманды"]
   ])
   .registerCommandsIn(path.join(__dirname, "commands/discord"));
 
