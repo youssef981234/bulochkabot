@@ -67,7 +67,7 @@ chat.connect().then(() => {
         case "help":
           chat.say(
             channel,
-            `@${user}, Доступные команды: !time !followage !vk !discord !request <url> !song !8ball <вопрос>`
+            `@${user}, Доступные команды: !time !followage !vk !discord !sr <url> !song !8ball <вопрос>`
           );
           break;
         case "vk":
@@ -160,7 +160,7 @@ chat.connect().then(() => {
             chat.say(channel, "У вас недостаточно прав для этой команды.");
           }
           break;
-        case "request":
+        case "sr":
           if (!defaultSettings.requestsMode) {
             chat.say(channel, `Реквесты в данный момент отключены!`);
             return;
@@ -239,7 +239,7 @@ chat.connect().then(() => {
 
 const sendMessagesAuto = [
   "Если впервые здесь - жми follow. Таким образом ты можешь отследить начало стрима вовремя, а также помочь в развитии канала.",
-  "Доступные команды: !time !followage !vk !discord !request <url> !song !8ball <вопрос>",
+  "Доступные команды: !time !followage !vk !discord !sr <url> !song !8ball <вопрос>",
   "Группа ВК: https://vk.com/public171412364",
   "Сервер Discord: https://discordapp.com/invite/gGk4Hge"
 ];
