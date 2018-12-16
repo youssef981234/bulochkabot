@@ -31,6 +31,9 @@ module.exports.eightBallAnswers = [
   "Ты делаешь мне больно, когда задаешь такие вопросы BibleThump",
   "Вот щас не понял cmonBruh"
 ];
+module.exports.defaultSettings = {
+  requestsMode: false
+};
 
 /**
  *
