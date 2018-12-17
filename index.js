@@ -51,7 +51,8 @@ chat.connect().then(() => {
 
     if (
       message.includes("getviewers .pro") ||
-      message.includes("getviewers.pro")
+      message.includes("getviewers.pro") ||
+      message.includes("getViewers .pro")
     ) {
       chat.ban(channel, user);
       chat.say(channel, `${user} был забанен (Реклама)`);
