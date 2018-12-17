@@ -43,6 +43,8 @@ chat.connect().then(() => {
     const user = content.username;
     const userId = content.tags.userId;
 
+    const messageInLowerCase = message.toLowerCase();
+
     const isModerator = "1" === content.tags.mod;
     const isSubscriber = "1" === content.tags.subscriber;
     const isBroadcaster = content.tags.badges.broadcaster;
@@ -50,9 +52,8 @@ chat.connect().then(() => {
     const isCommand = message.startsWith(prefix);
 
     if (
-      message.includes("getviewers .pro") ||
-      message.includes("getviewers.pro") ||
-      message.includes("getViewers .pro")
+      messageInLowerCase.includes("getviewers .pro") ||
+      messageInLowerCase.includes("getviewers.pro")
     ) {
       chat.ban(channel, user);
       chat.say(channel, `${user} был забанен (Реклама)`);
