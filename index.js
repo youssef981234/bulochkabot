@@ -185,6 +185,13 @@ chat.connect().then(() => {
           );
 
           break;
+        case "skip":
+          const fetch = queue.get(guildID);
+          if (isBroadcaster || isModerator) {
+            fetch.dispatcher.emit("end");
+            chat.say(channel, "Message");
+          }
+          break;
         default:
           chat.say(
             channel,
