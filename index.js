@@ -1,11 +1,25 @@
+/*
+ *
+ * Connect all packages
+ * Disocrd, Twitch and Express
+ *
+ */
+
 const { CommandoClient } = require("discord.js-commando");
 const TwitchClient = require("twitch-js").default;
+const express = require("express");
+let app = express();
 
+/**
+ *
+ * Setting countdown
+ *
+ */
 const countdown = require("countdown");
 countdown.resetLabels();
 countdown.setLabels(
-  " миллисекунд| сек| мин| час| день| неделя| месяц| год| десятилетие| век| тысячелетие",
-  " миллисекунды| сек| мин| часов| дней| недель| месяцов| лет| десятилетий| веков| тысячелетий",
+  " миллисекунд|с|м|ч|д|н|м|г| десятилетие| век| тысячелетие",
+  " миллисекунды|с|м|ч|д|н|м|г| десятилетий| веков| тысячелетий",
   ", ",
   ", "
 );
@@ -188,8 +202,8 @@ chat.connect().then(() => {
         case "skip":
           const fetch = queue.get(guildID);
           if (isBroadcaster || isModerator) {
-            fetch.dispatcher.emit("end");
-            chat.say(channel, "Message");
+            chat.say(channel, `Песня пропущена!`);
+            fetch.dispatcher.end();
           }
           break;
         default:
@@ -295,7 +309,26 @@ chat.connect().then(() => {
 
 DiscordClient.on("ready", () => {
   console.log(`Logged in as ${DiscordClient.user.tag}`);
-  DiscordClient.user.setActivity("Twitch", { type: "WATCHING" });
+  DiscordClient.user.setActivity("twitch.tv/thatlongcat", { type: "WATCHING" });
 });
 
 DiscordClient.login(discordToken);
+
+/**
+ *
+ * Express Server
+ *
+ */
+
+app.listen(defaultSettings.serverPort, () => {
+  console.log(`Server running on port ${defaultSettings.serverPort}`);
+});
+
+app.get("/api/v1/queue", (req, res, next) => {
+  const fetched = queue.get(guildID);
+  if (fetched === undefined) {
+    res.json([]);
+  } else {
+    res.json(fetched.queue);
+  }
+});
