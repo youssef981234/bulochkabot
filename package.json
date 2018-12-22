@@ -23,7 +23,6 @@
     "cyrillic-to-translit-js": "^2.1.0",
     "discord.js": "^11.4.2",
     "discord.js-commando": "^0.10.0",
-    "express": "^4.16.4",
     "ffmpeg": "0.0.4",
     "opusscript": "0.0.6",
     "path": "^0.12.7",

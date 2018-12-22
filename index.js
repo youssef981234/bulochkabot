@@ -1,14 +1,12 @@
 /*
  *
  * Connect all packages
- * Disocrd, Twitch and Express
+ * Disocrd, Twitch
  *
  */
 
 const { CommandoClient } = require("discord.js-commando");
 const TwitchClient = require("twitch-js").default;
-const express = require("express");
-let app = express();
 
 /**
  *
@@ -313,22 +311,3 @@ DiscordClient.on("ready", () => {
 });
 
 DiscordClient.login(discordToken);
-
-/**
- *
- * Express Server
- *
- */
-
-app.listen(defaultSettings.serverPort, () => {
-  console.log(`Server running on port ${defaultSettings.serverPort}`);
-});
-
-app.get("/api/v1/queue", (req, res, next) => {
-  const fetched = queue.get(guildID);
-  if (fetched === undefined) {
-    res.json([]);
-  } else {
-    res.json(fetched.queue);
-  }
-});
