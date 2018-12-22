@@ -42,7 +42,7 @@ const play = async (client, queue, data) => {
 module.exports.request = async (client, args, user, chat) => {
   const guild = client.guilds.get("500554530614935573");
   const guildID = guild.id;
-  const voiceChannel = guild.channels.get("522136010616864779");
+  const voiceChannel = guild.channels.get("525957486638006274");
 
   let validate = await ytdl.validateURL(args);
   console.log(args);
@@ -51,6 +51,18 @@ module.exports.request = async (client, args, user, chat) => {
     chat.say(channel, "Введите действительный URL-адрес!");
   } else {
     let info = await ytdl.getInfo(args);
+
+    let views = info.player_response.videoDetails.viewCount;
+    let timeInSeconds = info.player_response.videoDetails.lengthSeconds;
+
+    if (typeof views === "string" || typeof timeInSeconds === "string") {
+      views = parseInt(views);
+      timeInSeconds = parseInt(timeInSeconds);
+    }
+
+    if (views < 1000 || timeInSeconds > 600) {
+      return chat.say(channel, "Недопустимое видео!");
+    }
 
     let data = queue.get(guildID) || {};
 
@@ -62,10 +74,9 @@ module.exports.request = async (client, args, user, chat) => {
 
     data.queue.push({
       songTitle: info.title,
-      timeInSeconds: info.player_response.videoDetails.lengthSeconds,
       requester: user,
       url: args,
-      type: "Twitch"
+      type: "twitch"
     });
 
     if (!data.dispatcher) play(client, queue, data, chat);
