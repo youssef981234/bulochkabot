@@ -32,7 +32,8 @@ module.exports.eightBallAnswers = [
   "Вот щас не понял cmonBruh"
 ];
 module.exports.defaultSettings = {
-  requestsMode: false
+  requestsMode: false,
+  serverPort: 3000
 };
 
 /**
