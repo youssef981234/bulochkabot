@@ -31,8 +31,6 @@ const {
   channelId,
   discordToken,
   guildID,
-  prefix,
-  eightBallAnswers,
   defaultSettings
 } = require("./constants");
 
@@ -61,7 +59,7 @@ chat.connect().then(() => {
     const isSubscriber = "1" === content.tags.subscriber;
     const isBroadcaster = content.tags.badges.broadcaster;
 
-    const isCommand = message.startsWith(prefix);
+    const isCommand = message.startsWith(defaultSettings.prefix);
 
     if (
       messageInLowerCase.includes("getviewers .pro") ||
@@ -98,9 +96,9 @@ chat.connect().then(() => {
           break;
 
         case "8ball":
-          const len = eightBallAnswers.length - 1;
+          const len = defaultSettings.eightBallAnswers.length - 1;
           const randomAnswer =
-            eightBallAnswers[Math.round(Math.random() * len)];
+            defaultSettings.eightBallAnswers[Math.round(Math.random() * len)];
           chat.say(channel, `@${user}, ${randomAnswer}`);
           break;
 
@@ -232,7 +230,7 @@ chat.connect().then(() => {
 
   chat.on("USERNOTICE/RESUBSCRIPTION", content => {
     console.log(content);
-    const user = content.username;
+    const user = content.tags.displayName;
     const months = content.parameters.months;
     chat.say(
       channel,
@@ -242,7 +240,7 @@ chat.connect().then(() => {
 
   chat.on("USERNOTICE/SUBSCRIPTION", content => {
     console.log(content);
-    const user = content.username;
+    const user = content.tags.displayName;
     chat.say(
       channel,
       `@${user}, Добро пожаловать в нашу булочную семью, друг!`
@@ -280,7 +278,7 @@ setInterval(() => {
 
 const DiscordClient = new CommandoClient({
   owner: "462675608556797952",
-  commandPrefix: prefix,
+  commandPrefix: defaultSettings.prefix,
   disableEveryone: true
 });
 
