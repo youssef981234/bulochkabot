@@ -13,7 +13,7 @@ try {
 
 module.exports.defaultSettings = {
   requestsMode: false,
-  eightBallAnswers = [
+  eightBallAnswers: [
     "Нет и точка.",
     "Все возможно Kappa",
     "... ну, и такое бывает KappaPride",
@@ -32,7 +32,7 @@ module.exports.defaultSettings = {
     "Ты делаешь мне больно, когда задаешь такие вопросы BibleThump",
     "Вот щас не понял cmonBruh"
   ],
-  prefix = "!"
+  prefix: "!"
 };
 
 /**
