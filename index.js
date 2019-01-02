@@ -225,6 +225,8 @@ chat.connect().then(() => {
         channel,
         `@${user}, Воу воу, полегче! Спасибо за ${bits} битцов! Kreygasm`
       );
+    } else {
+      chat.say(channel, `Спасибо за  ${bits} битцов, шейх! PogChamp`);
     }
   });
 
