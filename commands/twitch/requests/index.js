@@ -79,12 +79,11 @@ module.exports.request = async (client, args, user, chat) => {
       type: "twitch"
     });
 
-    if (!data.dispatcher) play(client, queue, data, chat);
-    else {
-      chat.say(
-        channel,
-        `Добавлено в очередь: ${info.title} | Поставил: ${user}`
-      );
+    if (!data.dispatcher) {
+      play(client, queue, data, chat);
+      chat.say(channel, `Песня ${info.title} была добавлена первой в очередь.`);
+    } else {
+      chat.say(channel, `Песня ${info.title} была добавлена в очередь.`);
     }
     queue.set(guildID, data);
   }
