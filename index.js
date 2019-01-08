@@ -279,7 +279,7 @@ setInterval(() => {
  */
 
 const DiscordClient = new CommandoClient({
-  owner: "462675608556797952",
+  owner: "440860123968176148",
   commandPrefix: defaultSettings.prefix,
   disableEveryone: true
 });
